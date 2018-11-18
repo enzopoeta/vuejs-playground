@@ -1,0 +1,55 @@
+<script src="/js/vue.js"></script>
+
+<!--
+
+a interpolacao {{}} nao pode ser utilizada para passar valores do model para
+dentro de uma propriedade da Tag html. Para isso é preciso utilizar a diretiva
+v-bind
+O v-bind tem a seguinte sintaxe :
+
+<tag v-bind:propriedadetag="<propriedade do model>">
+
+
+
+-->
+
+
+
+<hmtl>
+
+<body>
+
+<div id="app">
+Entre com uma cor :<br/>    
+<input v-model="color"><br/>
+<br/>
+Mostrando o conteudo sem o v-bind (cor fica maluca na propriedade)
+<br/>
+  <p><font color="{{getColor()}}">TEXTO DE TESTE !!!</font></p>
+<br/>
+  Conteudo com o v-html
+<br/>
+<p><font v-bind:color="getColor()">TEXTO DE TESTE !!!</font></p>
+
+</div>
+
+</body>
+
+
+</hmtl>
+
+
+<script type="text/javascript">
+     new Vue({
+  el: '#app',
+  data: {
+    color: 'red'
+  },
+  methods: {
+    getColor:function(){
+	return this.color;
+    }
+  }
+  
+})
+</script>

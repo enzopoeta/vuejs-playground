@@ -1,0 +1,52 @@
+<script src="/js/vue.js"></script>
+
+<!--
+
+Com a diretiva v-once um componente e renderizado uma 
+unica vez e independentemente de quantas vezes o valor 
+e alterado no model
+
+
+
+-->
+
+
+
+<hmtl>
+
+<body>
+
+<div id="app">
+Entre com uma cor :<br/>    
+<input v-model="color"><br/>
+<br/>
+codigo com a diretiva v-once
+<br/>
+<p v-once><font v-bind:color="getColor()">TEXTO DE TESTE !!!</font></p>
+<br/>
+codigo sem a diretiva v-once
+<br/>
+<p><font v-bind:color="getColor()">TEXTO DE TESTE !!!</font></p>
+
+</div>
+
+</body>
+
+
+</hmtl>
+
+
+<script type="text/javascript">
+     new Vue({
+  el: '#app',
+  data: {
+    color: 'red'
+  },
+  methods: {
+    getColor:function(){
+	return this.color;
+    }
+  }
+  
+})
+</script>

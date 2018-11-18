@@ -1,0 +1,52 @@
+<script src="/js/vue.js"></script>
+
+<!--
+
+O View nao permite que conteudo HTML seja exibido na interpolacao {{}}
+para imprimir conteudo HTML se isso se fizer necessário e preciso utilizar a 
+diretiva v-html
+
+
+
+-->
+
+
+
+<hmtl>
+
+<body>
+
+<div id="app">
+    
+<input v-model="message"><br/>
+<br/>
+Mostrando o conteudo sem o vhtml
+<br/>
+  <p>{{ sayHello() }}</p>
+<br/>
+  Conteudo com o vhtml
+<br/>
+  <p v-html="sayHello()"></p>
+
+</div>
+
+</body>
+
+
+</hmtl>
+
+
+<script type="text/javascript">
+     new Vue({
+  el: '#app',
+  data: {
+    message: '<h1>Teste de H!</h1>'
+  },
+  methods: {
+    sayHello:function(){
+	return this.message;
+    }
+  }
+  
+})
+</script>

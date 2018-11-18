@@ -1,0 +1,57 @@
+<script src="/js/vue.js"></script>
+
+<!--
+
+A diretiva v-on e utilizada pelo vue para a ativacao de eventos nos 
+componentes HTML
+segue a sintaxe :
+
+
+<button v-on:<evento do DOM>="metodo-do-model">teste</button>
+
+
+
+-->
+
+
+
+<hmtl>
+
+<body>
+
+<div id="app">
+
+<button v-on:click="getColor()">Clique para trocar a cor</button>
+<br/>
+<br/>
+<p><font v-bind:color="color">TEXTO DE TESTE !!!</font></p>
+
+</div>
+
+</body>
+
+
+</hmtl>
+
+
+<script type="text/javascript">
+     new Vue({
+  el: '#app',
+  data: {
+    color: 'red'
+  },
+  methods: {
+    getColor:function(){
+	        if(this.color=='red'){
+            this.color='blue';
+          }
+          else
+          {
+            this.color='red';
+          }
+          return this.color;
+    }
+  }
+  
+})
+</script>

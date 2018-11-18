@@ -1,0 +1,55 @@
+<script src="/js/vue.js"></script>
+
+<!--
+
+O evento do dom e repassado automaticamente pela
+diretiva v-on e pode ser utilizado nos metodos do objeto
+vue
+
+
+
+-->
+
+
+
+<hmtl>
+
+<body>
+
+<div id="app">
+Descubra a posi&ccedil;&atilde;o do mouse ao colocar o cursor no texto abaixo:
+<br/>
+<h1 v-on:mousemove="getCoordinates">Coordenadas cursor do mouse ! {{cX}} , {{cY}}
+
+</div>
+
+</body>
+
+
+</hmtl>
+
+
+<script type="text/javascript">
+     new Vue({
+  el: '#app',
+  data: {
+
+    cX:0,
+    cY:0
+  },
+  methods: {
+    getCoordinates:function(event){
+	        
+          
+          this.cX=event.clientX;
+          this.cY=event.clientY;
+          
+
+          //console.log(event);
+
+
+    }
+  }
+  
+})
+</script>
