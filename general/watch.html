@@ -1,0 +1,11 @@
+A sessao watch do objeto VUE serve como o proprio nome sugere para chamar uma funcao que roda
+de maneira assincrona toda a vez que uma "watched property" da sessao data é alterada
+ai vai +- a sintaxe:
+
+watch: {
+    propriedadedodata: function(value){ // o value e passado de maneira automatica pelo vue
+            var vm =this; // como a chamada e feita como um call back e preciso colocar
+            a referencia do objeto vue original se voce quiser alterar algo nele
+            vm.propriedadedodata=0;
+    }
+}

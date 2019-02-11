@@ -1,0 +1,10 @@
+Um objeto vue pode ter uma sessao computed que tem um funcionamento similar a sessao methods com alguns detalhes
+interessantes ...
+quando o dom sofre um alteracao os as funcoes que estao contidas na sessao methods sao executadas
+obrigatoriamente ja que ali o view nao sabe nada a respeito do conteudo da mesmas
+Ja na sessao computed o view faz uma especie de cache das funcoes contidas ali e como ele tem 
+conhecimento do conteudo das funcoes e capaz rodar so aquilo que e necessario para a atualizacao 
+daquilo que voce precisa .... e muito util para funcoes complexas que nao precisam serem atualizadas a todo o momento
+A funcao contida na sessao computed nao eh chamada como uma funcao mas sim como uma variavel.
+
+O detalhe é que as computed properties devem ser utilizadas para resultados sincronos ou praticamente sincronos

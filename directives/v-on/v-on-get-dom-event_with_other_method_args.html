@@ -1,0 +1,54 @@
+<script src="/js/vue.js"></script>
+
+<!--
+
+Se voce quiser passar outro argumento junto com o event
+é necessario utilizar a variavel especial $event
+
+
+-->
+
+
+
+<hmtl>
+
+<body>
+
+<div id="app">
+Descubra a posi&ccedil;&atilde;o do mouse ao colocar o cursor no texto abaixo:
+<br/>
+<h1 v-on:mousemove="getCoordinates('valor passado no parametro da fnuncao',$event)">Coordenadas cursor do mouse ! {{cX}} , {{cY}}  -- Parametro - {{parameterValue}}
+
+</div>
+
+</body>
+
+
+</hmtl>
+
+
+<script type="text/javascript">
+     new Vue({
+  el: '#app',
+  data: {
+
+    cX:0,
+    cY:0,
+    parameterValue:'valor inicial'
+  },
+  methods: {
+    getCoordinates:function(parameter,event){
+	        
+          
+          this.cX=event.clientX;
+          this.cY=event.clientY;
+          this.parameterValue=parameter;
+
+          //console.log(event);
+
+
+    }
+  }
+  
+})
+</script>

@@ -1,0 +1,49 @@
+<script src="/js/vue.js"></script>
+
+<!--
+
+O v-model serve para fazer o 2 way binding entre os 
+elementos de tela o model fazendo com que essa interação se torne 
+reativa
+
+
+-->
+
+
+
+<hmtl>
+
+<body>
+
+<div id="app">
+<h1>Digite Algo :</h1>
+<br/>
+<input id="inputel" v-model="text"></input>
+<br/>
+<h1>O valor do que foi digitado : {{text}} </h1>
+
+</div>
+
+</body>
+
+
+</hmtl>
+
+
+
+
+
+<script type="text/javascript">
+     new Vue({
+  el: '#app',
+  data: {
+    text:''
+
+  },
+  methods: {
+
+    }
+  }
+  
+);
+</script>

@@ -1,0 +1,54 @@
+<script src="/js/vue.js"></script>
+
+<!--
+
+É possível parar a propagacao de um evento para um elemento filho 
+utilizando o v-on:<evento>.stop
+
+
+-->
+
+
+
+<hmtl>
+
+<body>
+
+<div id="app">
+Descubra a posi&ccedil;&atilde;o do mouse ao colocar o cursor no texto abaixo:
+<br/>
+<h1 v-on:mousemove="getCoordinates('valor passado no parametro da fnuncao',$event)"> Coordenadas cursor do mouse ! {{cX}} , {{cY}}  -- <span v-on:mousemove.stop="">Parametro - {{parameterValue}} </span>
+
+</div>
+
+</body>
+
+
+</hmtl>
+
+
+<script type="text/javascript">
+     new Vue({
+  el: '#app',
+  data: {
+
+    cX:0,
+    cY:0,
+    parameterValue:'valor inicial'
+  },
+  methods: {
+    getCoordinates:function(parameter,event){
+	        
+          
+          this.cX=event.clientX;
+          this.cY=event.clientY;
+          this.parameterValue=parameter;
+
+          //console.log(event);
+
+
+    }
+  }
+  
+})
+</script>
