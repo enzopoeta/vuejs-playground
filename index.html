@@ -1,0 +1,206 @@
+<body>
+<html>
+
+<h1>Vue Playground</h1>
+
+<h3>Diretivas</h3>
+
+<ul>
+
+<li>
+    <a href="directives/v-bind/v-bind.html" ><h3>v-bind</h3></a>
+<p> 
+    <pre>    
+    A interpolacao {{}} nao pode ser utilizada para passar valores do model para
+    dentro de uma propriedade da Tags html. Para isso é preciso utilizar a diretiva
+    v-bind.  O v-bind tem a seguinte sintaxe :
+
+    <textarea cols="80" style="text-align: left;  color: crimson;">
+    <tag v-bind:propriedadetag="<propriedade do model>"></tag>
+    </textarea>
+    
+    </pre>
+        
+</p>
+</li>
+
+
+<li>
+        <a href="directives/v-html/v-html.html" ><h3>v-html</h3></a>
+<p> 
+     <pre>    
+     O View nao permite que conteudo HTML seja exibido na interpolacao {{}}
+     para imprimir conteudo HTML se isso se fizer necessario e preciso 
+     utilizar a diretiva v-html. O v-html tem a seguinte sintaxe :
+    
+     <textarea rows="5" cols="80" style="text-align: left;  color: crimson;">
+     <p v-html="sayHello()"></p>
+
+     objeto vue :
+
+     <script type="text/javascript">
+        new Vue({
+     el: '#app',
+     data: {
+       message: '<h1>Teste de H!</h1>'
+     },
+     methods: {
+       sayHello:function(){
+       return this.message;
+       }
+     }
+     
+   })
+   </script>
+
+
+     </textarea>
+        
+     </pre>
+            
+</p>
+</li>
+
+<li>
+        <a href="directives/v-model/v-model-intro.html" ><h3>v-model</h3></a>
+<p> 
+     <pre>    
+     O v-model serve para fazer o 2 way binding entre os 
+     elementos de tela o model fazendo com que essa interacao se 
+     torne reativa. O valor do v-model e uma das propriedades do data.
+    
+     <textarea rows="3" cols="80" style="text-align: left;  color: crimson;">
+     <input id="inputel" v-model="text"></input>
+       <br/>
+     <h1>O valor do que foi digitado : {{text}} </h1>
+     </textarea>
+        
+     </pre>
+            
+</p>
+</li>
+
+
+<li>
+    <h3>Testes com v-on</h3>
+
+<ul>
+
+<li>
+
+        <a href="directives/v-on/v-on.html" ><h3>v-on</h3></a>
+<p> 
+     <pre>    
+     A diretiva v-on e utilizada pelo vue para a ativacao de eventos nos 
+     componentes HTML. Segue a sintaxe :
+    
+     <textarea cols="80" style="text-align: left;  color: crimson;">
+            <button v-on:<evento do DOM>="metodo-do-model">teste</button>
+     </textarea>
+        
+     </pre>
+            
+</p>
+</li>
+
+
+<li>
+
+        <a href="directives/v-on/v-on-get-dom-event.html" ><h3>v-on-get-dom-event-html</h3></a>
+<p> 
+     <pre>    
+        Eventos do dom podem ser  repassados automaticamente pela
+        diretiva v-on podendo assim serem utilizados nos metodos do objeto
+        vue. Ex: 
+
+     <textarea rows="5" cols="80" style="text-align: left;  color: crimson;">
+     <h1 v-on:mousemove="getCoordinates">Coordenadas cursor do mouse ! {{cX}} , {{cY}}
+
+     Objeto view:
+     <script type="text/javascript">
+        new Vue({
+     el: '#app',
+     data: {
+   
+       cX:0,
+       cY:0
+     },
+     methods: {
+       getCoordinates:function(event){
+               
+             
+             this.cX=event.clientX;
+             this.cY=event.clientY;
+             
+   
+             //console.log(event);
+   
+   
+       }
+     }
+     
+   })
+   </script>
+      
+
+
+     </textarea>
+        
+     </pre>
+            
+</p>
+</li>
+
+<li>
+
+        <a href="directives/v-on/v-on-listen-keyboard-events.html" ><h3>v-on-listen-keyboard-events</h3></a>
+<p> 
+     <pre>    
+        Voce pode escutar eventos de teclado e dispara-los so quando certas 
+        teclas forem pressionada ex: enter, espaco para 
+        outros key modifiers ver : 
+            
+            https://vuejs.org/v2/guide/events.html#Key-Modifiers
+    
+     <textarea cols="80" style="text-align: left;  color: crimson;">
+            <button v-on:<evento do DOM>="metodo-do-model">teste</button>
+     </textarea>
+        
+     </pre>
+            
+</p>
+</li>
+
+
+
+
+
+</ul>
+
+
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+
+
+
+
+</html>
+
+
+</body>
