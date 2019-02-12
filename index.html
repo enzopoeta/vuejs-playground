@@ -3,7 +3,58 @@
 
 <h1>Vue Playground</h1>
 
-<h3>Diretivas</h3>
+
+<h3>Dicas</h3>
+
+<h3>-- Expressoes nas propriedades do vue</h3>
+
+<pre>
+As proprieedades das diretivas ou mesmo da interpolacao 
+podem conter codigo js desde que este seja uma unica expressao 
+sem loops ou condicionais
+</pre>
+
+<h3>-- Methods vs Computed Properties</h3>
+
+<pre>
+  Um objeto vue pode ter uma sessao computed que tem um funcionamento similar a sessao methods com alguns detalhes
+  interessantes ... Quando o dom sofre um alteracao os as funcoes que estao contidas na sessao methods sao executadas
+  obrigatoriamente ja que nela o view nao qualquer controle sobre o conteudo da mesmas.
+  Ja na sessao computed o view faz uma especie de cache das funcoes e tem conhecimento do conteudo das mesmas 
+  senso capaz executar so aquilo que e necessario para a atualizacao necessaria do dom .... 
+  E muito util para funcoes complexas que nao precisam serem atualizadas a todo o momento.
+  Um outro detalhe e que a funcao contida na sessao computed nao eh chamada como uma funcao mas sim como uma variavel.
+  
+  Observacao importante :
+
+  As computed properties devem ser utilizadas para resultados sincronos ou praticamente sincronos
+</pre>
+
+
+<h3>-- Sessao watch</h3>
+
+<pre>
+A sessao watch do objeto VUE serve como o proprio nome sugere para chamar uma funcao que roda
+de maneira assincrona toda a vez que uma "watched property" da sessao data é alterada.
+Segue a sintaxe basica:
+
+watch: {
+    propriedadedodata: function(value){ // o value e passado de maneira automatica pelo vue
+            var vm =this; // como a chamada e feita como um call back e preciso colocar
+            a referencia do objeto vue original se voce quiser alterar algo nele
+            vm.propriedadedodata=0;
+    }
+}
+</pre>
+
+
+
+
+
+
+
+
+<h3>-- Diretivas</h3>
 
 <ul>
 
@@ -162,8 +213,31 @@
             
             https://vuejs.org/v2/guide/events.html#Key-Modifiers
     
-     <textarea cols="80" style="text-align: left;  color: crimson;">
-            <button v-on:<evento do DOM>="metodo-do-model">teste</button>
+     <textarea rows="10" cols="80" style="text-align: left;  color: crimson;">
+     <input id="inputel" v-on:keyup.enter.space="setText"></input>
+
+     Objeto vue :
+
+     <script type="text/javascript">
+      new Vue({
+      el: '#app',
+      data: {
+      text:''
+ 
+      },
+      methods: {
+      setText:function(event)
+      {
+          this.text= event.target.value;
+      }
+ 
+ 
+      }
+    }
+   
+   );
+ </script>
+
      </textarea>
         
      </pre>
@@ -173,14 +247,148 @@
 
 
 
+<li>
+
+  <a href="directives/v-on/v-on-get-dom-event_with_other_method_args.html" ><h3>v-on-get-dom-event_with_other_method_args</h3></a>
+<p> 
+<pre>    
+Caso se queira passar outro argumento junto com o evento do DOM
+&eacute; necessario utilizar a variavel especial $event :
+  
+
+     <textarea rows="10" cols="80" style="text-align: left;  color: crimson;">
+      
+  <h1 v-on:mousemove="getCoordinates('valor passado no parametro da fnuncao',$event)">Coordenadas cursor do mouse ! {{cX}} , {{cY}}  -- Parametro - {{parameterValue}}
+
+  Objeto vue : 
+  
+  <script type="text/javascript">
+       new Vue({
+    el: '#app',
+    data: {
+  
+      cX:0,
+      cY:0,
+      parameterValue:'valor inicial'
+    },
+    methods: {
+      getCoordinates:function(parameter,event){
+            
+            
+            this.cX=event.clientX;
+            this.cY=event.clientY;
+            this.parameterValue=parameter;
+  
+            //console.log(event);
+  
+  
+      }
+    }
+    
+  })
+  </script>
 
 
-</ul>
 
-
+</textarea>
+  
+</pre>
+      
+</p>
 </li>
 
 
+<li>
+
+  <a href="directives/v-on/v-on-stop-event-propagation-child.html" ><h3>v-on-stop-event-propagation-on-child</h3></a>
+<p> 
+<pre>    
+E possivel parar a propagacao de um evento para um elemento filho 
+utilizando o v-on:<evento>.stop  Ex :
+
+      <textarea rows="10" cols="80" style="text-align: left;  color: crimson;">
+
+    <h1 v-on:mousemove="getCoordinates('valor passado no parametro da fnuncao',$event)"> Coordenadas cursor do mouse ! {{cX}} , {{cY}}  -- <span v-on:mousemove.stop="">Parametro - {{parameterValue}} </span>
+    
+    Objeto vue
+    
+
+         new Vue({
+      el: '#app',
+      data: {
+    
+        cX:0,
+        cY:0,
+        parameterValue:'valor inicial'
+      },
+      methods: {
+        getCoordinates:function(parameter,event){
+              
+              
+              this.cX=event.clientX;
+              this.cY=event.clientY;
+              this.parameterValue=parameter;
+    
+              //console.log(event);
+    
+    
+        }
+      }
+      
+    })
+</textarea>
+  
+</pre>
+      
+</p>
+</li>
+
+</ul>
+
+</li>
+
+<li>
+  <a href="directives/v-once/v-once.html" ><h3>v-once</h3></a>
+<p> 
+  <pre>    
+  Com a diretiva v-once um componente e renderizado uma unica 
+  vez independentemente de quantas vezes o valor associado e 
+  alterado no model. Ex:
+
+           <textarea rows="10" cols="80" style="text-align: left;  color: crimson;">
+  codigo com a diretiva v-once
+  <br/>
+  <p v-once><font v-bind:color="getColor()">TEXTO DE TESTE !!!</font></p>
+  <br/>
+  codigo sem a diretiva v-once
+  <br/>
+  <p><font v-bind:color="getColor()">TEXTO DE TESTE !!!</font></p>
+
+  objeto vue ;
+  
+  <script type="text/javascript">
+    new Vue({
+ el: '#app',
+ data: {
+   color: 'red'
+ },
+ methods: {
+   getColor:function(){
+ return this.color;
+   }
+ }
+ 
+})
+</script>
+
+
+
+  </textarea>
+  
+  </pre>
+      
+</p>
+</li>
 
 
 
