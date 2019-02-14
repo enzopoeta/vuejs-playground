@@ -1,0 +1,226 @@
+<html>
+    <body>
+
+<h1>Vue Playground</h1>
+
+
+  <h3>Diretivas -- v-on</h3>
+
+
+  <ul>
+
+        <li>
+        
+                <a href="directives/v-on/v-on.html" ><h3>v-on</h3></a>
+        <p> 
+             <pre>    
+             A diretiva v-on e utilizada pelo vue para a ativacao de eventos nos 
+             componentes HTML. Segue a sintaxe :
+            
+             <textarea cols="80" style="text-align: left;  color: crimson;">
+                    <button v-on:<evento do DOM>="metodo-do-model">teste</button>
+             </textarea>
+                
+             </pre>
+                    
+        </p>
+        </li>
+        
+        
+        <li>
+        
+                <a href="directives/v-on/v-on-get-dom-event.html" ><h3>v-on-get-dom-event-html</h3></a>
+        <p> 
+             <pre>    
+                Eventos do dom podem ser  repassados automaticamente pela
+                diretiva v-on podendo assim serem utilizados nos metodos do objeto
+                vue. Ex: 
+        
+             <textarea rows="5" cols="80" style="text-align: left;  color: crimson;">
+             <h1 v-on:mousemove="getCoordinates">Coordenadas cursor do mouse ! {{cX}} , {{cY}}
+        
+             Objeto view:
+             <script type="text/javascript">
+                new Vue({
+             el: '#app',
+             data: {
+           
+               cX:0,
+               cY:0
+             },
+             methods: {
+               getCoordinates:function(event){
+                       
+                     
+                     this.cX=event.clientX;
+                     this.cY=event.clientY;
+                     
+           
+                     //console.log(event);
+           
+           
+               }
+             }
+             
+           })
+           </script>
+              
+        
+        
+             </textarea>
+                
+             </pre>
+                    
+        </p>
+        </li>
+        
+        <li>
+        
+                <a href="directives/v-on/v-on-listen-keyboard-events.html" ><h3>v-on-listen-keyboard-events</h3></a>
+        <p> 
+             <pre>    
+                Voce pode escutar eventos de teclado e dispara-los so quando certas 
+                teclas forem pressionada ex: enter, espaco para 
+                outros key modifiers ver : 
+                    
+                    https://vuejs.org/v2/guide/events.html#Key-Modifiers
+            
+             <textarea rows="10" cols="80" style="text-align: left;  color: crimson;">
+             <input id="inputel" v-on:keyup.enter.space="setText"></input>
+        
+             Objeto vue :
+        
+             <script type="text/javascript">
+              new Vue({
+              el: '#app',
+              data: {
+              text:''
+         
+              },
+              methods: {
+              setText:function(event)
+              {
+                  this.text= event.target.value;
+              }
+         
+         
+              }
+            }
+           
+           );
+         </script>
+        
+             </textarea>
+                
+             </pre>
+                    
+        </p>
+        </li>
+        
+        
+        
+        <li>
+        
+          <a href="directives/v-on/v-on-get-dom-event_with_other_method_args.html" ><h3>v-on-get-dom-event_with_other_method_args</h3></a>
+        <p> 
+        <pre>    
+        Caso se queira passar outro argumento junto com o evento do DOM
+        &eacute; necessario utilizar a variavel especial $event :
+          
+        
+             <textarea rows="10" cols="80" style="text-align: left;  color: crimson;">
+              
+          <h1 v-on:mousemove="getCoordinates('valor passado no parametro da fnuncao',$event)">Coordenadas cursor do mouse ! {{cX}} , {{cY}}  -- Parametro - {{parameterValue}}
+        
+          Objeto vue : 
+          
+          <script type="text/javascript">
+               new Vue({
+            el: '#app',
+            data: {
+          
+              cX:0,
+              cY:0,
+              parameterValue:'valor inicial'
+            },
+            methods: {
+              getCoordinates:function(parameter,event){
+                    
+                    
+                    this.cX=event.clientX;
+                    this.cY=event.clientY;
+                    this.parameterValue=parameter;
+          
+                    //console.log(event);
+          
+          
+              }
+            }
+            
+          })
+          </script>
+        
+        
+        
+        </textarea>
+          
+        </pre>
+              
+        </p>
+        </li>
+        
+        
+        <li>
+        
+          <a href="directives/v-on/v-on-stop-event-propagation-child.html" ><h3>v-on-stop-event-propagation-on-child</h3></a>
+        <p> 
+        <pre>    
+        E possivel parar a propagacao de um evento para um elemento filho 
+        utilizando o v-on:<evento>.stop  Ex :
+        OBS : Existe o modificador .prevent que pode ser usado junto com o .stop que previne o funcionamento default do componente
+        
+        
+              <textarea rows="10" cols="80" style="text-align: left;  color: crimson;">
+        
+            <h1 v-on:mousemove="getCoordinates('valor passado no parametro da fnuncao',$event)"> Coordenadas cursor do mouse ! {{cX}} , {{cY}}  -- <span v-on:mousemove.stop="">Parametro - {{parameterValue}} </span>
+            
+            Objeto vue
+            
+        
+                 new Vue({
+              el: '#app',
+              data: {
+            
+                cX:0,
+                cY:0,
+                parameterValue:'valor inicial'
+              },
+              methods: {
+                getCoordinates:function(parameter,event){
+                      
+                      
+                      this.cX=event.clientX;
+                      this.cY=event.clientY;
+                      this.parameterValue=parameter;
+            
+                      //console.log(event);
+            
+            
+                }
+              }
+              
+            })
+        </textarea>
+          
+        </pre>
+              
+        </p>
+        </li>
+        
+        </ul>
+        
+
+
+
+  </body>
+  </html>
