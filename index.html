@@ -1,10 +1,34 @@
-<body>
+
 <html>
+    <body>
 
 <h1>Vue Playground</h1>
 
 
-<h3>Dicas</h3>
+  <h3>Dicas</h3>
+    
+  <h3>-- Shorthands</h3>
+    
+  <pre>
+      &Eacute; possivel abreviar a sintaxe das 2 diretivas mais usadas no vue : 
+
+      <textarea rows="5" cols="80" style="text-align: left;  color: crimson;">
+      Abreviacao para v-bind
+      <!-- sintaxe completa -->
+      <a v-bind:href="url"> ... </a>
+      
+      <!-- abreviacao -->
+      <a :href="url"> ... </a>
+      Abreviação para v-on
+      <!-- sintaxe completa -->
+      <a v-on:click="doSomething"> ... </a>
+      
+      <!-- abreviacao -->
+      <a @click="doSomething"> ... </a>
+      </textarea>
+  </pre>
+
+
 
 <h3>-- Expressoes nas propriedades do vue</h3>
 
@@ -39,7 +63,7 @@ de maneira assincrona toda a vez que uma "watched property" da sessao data é al
 Segue a sintaxe basica:
 
 watch: {
-    propriedadedodata: function(value){ // o value e passado de maneira automatica pelo vue
+    propriedadedodata: function(newvalue,oldvalue){ // o value e passado de maneira automatica pelo vue
             var vm =this; // como a chamada e feita como um call back e preciso colocar
             a referencia do objeto vue original se voce quiser alterar algo nele
             vm.propriedadedodata=0;
@@ -305,6 +329,8 @@ Caso se queira passar outro argumento junto com o evento do DOM
 <pre>    
 E possivel parar a propagacao de um evento para um elemento filho 
 utilizando o v-on:<evento>.stop  Ex :
+OBS : Existe o modificador .prevent que pode ser usado junto com o .stop que previne o funcionamento default do componente
+
 
       <textarea rows="10" cols="80" style="text-align: left;  color: crimson;">
 
@@ -390,25 +416,24 @@ utilizando o v-on:<evento>.stop  Ex :
 </p>
 </li>
 
+</ul>
 
+<h3>-- Estilos CSS</h3>
 
+<ul>
 
-
-
-
-
-
-
-
-
-
+<li>
+    <a href="styles_samples/" ><h3>Exemplos</h3></a>
+<p> 
+    <pre>    
+    Alguns exemplos de integracao do VUE com estilos CSS
+    </pre>
+        
+</p>
+</li>
 </ul>
 
 
-
-
+</body>
 
 </html>
-
-
-</body>
