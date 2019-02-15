@@ -1,0 +1,260 @@
+<html>
+    <body>
+
+<h1>Vue Playground</h1>
+
+
+  <h3>Diretivas -- v-for</h3>
+
+
+
+  <ul>
+
+        <li>
+            <a href="directives/v-for/listas-v1.html" ><h3>v-for</h3></a>
+        <p> 
+             <pre>    
+            Teste de loop simples :
+            
+             <textarea rows="10" cols="80" style="text-align: left;  color: crimson;">
+                    <div id="app">
+                            <ul>
+                                <li v-for="cor in cores">{{ cor }}</li>
+                            </ul>
+                        </div>
+                        
+                        <script>
+                            new Vue({
+                                el: '#app',
+                                data: {
+                                    cores: ['vermelho', 'verde', 'amarelo', 'azul'],
+                                    pessoas: [
+                                        { nome: 'Ana', idade: 26, peso: 59 },
+                                        { nome: 'Guilherme', idade: 22, peso: 89 }
+                                    ]
+                                }
+                            })
+                        </script>
+             </textarea>
+                
+             </pre>
+                    
+        </p>
+        </li>
+
+        <li>
+                <a href="directives/v-for/listas-v2.html" ><h3>v-for recuperando o indice da linha</h3></a>
+            <p> 
+                 <pre>    
+                v-for recuperando o indice da linha a cada iteracao
+                
+                 <textarea rows="10" cols="80" style="text-align: left;  color: crimson;">
+                        
+
+                        <div id="app">
+                                <ul>
+                                    <li v-for="(cor, i) in cores">{{ i + 1 }}) {{ cor }}</li>
+                                </ul>
+                            </div>
+                            
+                            <script>
+                                new Vue({
+                                    el: '#app',
+                                    data: {
+                                        cores: ['vermelho', 'verde', 'amarelo', 'azul'],
+                                        pessoas: [
+                                            { nome: 'Ana', idade: 26, peso: 59 },
+                                            { nome: 'Guilherme', idade: 22, peso: 89 }
+                                        ]
+                                    }
+                                })
+                            </script>
+                            
+                            <style>
+                                ul {
+                                    list-style: none;
+                                }
+                            </style>
+
+                 </textarea>
+                    
+                 </pre>
+                        
+            </p>
+            </li>
+
+
+            <li>
+                    <a href="directives/v-for/listas-v3.html" ><h3>v-for para objetos json</h3></a>
+                <p> 
+                     <pre>    
+                    exemplo ensinando acessar uma lista de  objetos json . os atributos de cada objeto (chave,valor) e o indice
+                    
+                     <textarea rows="10" cols="80" style="text-align: left;  color: crimson;">
+                            
+                            <div id="app">
+                                    <ul>
+                                        <li v-for="(cor, i) in cores">{{ i + 1 }}) {{ cor }}</li>
+                                    </ul>
+                                    <hr>
+                                    <template v-for="(cor, i) in cores">
+                                        <h1>{{ cor }}</h1>
+                                        <p>{{ i }}</p>
+                                    </template>
+                                    <hr>
+                                    <ul>
+                                        <li v-for="pessoa in pessoas">
+                                            <div v-for="(valor, chave, index) in pessoa">
+                                                {{ chave }} = {{ valor }} ({{ index + 1}})
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <script>
+                                    new Vue({
+                                        el: '#app',
+                                        data: {
+                                            cores: ['vermelho', 'verde', 'amarelo', 'azul'],
+                                            pessoas: [
+                                                { nome: 'Ana', idade: 26, peso: 59 },
+                                                { nome: 'Guilherme', idade: 22, peso: 89 }
+                                            ]
+                                        }
+                                    })
+                                </script>
+    
+                     </textarea>
+                        
+                     </pre>
+                            
+                </p>
+                </li>
+
+
+                <li>
+                        <a href="directives/v-for/listas-v4.html" ><h3>v-for com tag template</h3></a>
+                    <p> 
+                         <pre>    
+                        exemplo de vfor utilizando a tag "fake" template
+                        
+                         <textarea rows="10" cols="80" style="text-align: left;  color: crimson;">
+                                <div id="app">
+                                        <ul>
+                                            <li v-for="(cor, i) in cores">{{ i + 1 }}) {{ cor }}</li>
+                                        </ul>
+                                        <hr>
+                                        <template v-for="(cor, i) in cores">
+                                            <h1>{{ cor }}</h1>
+                                            <p>{{ i }}</p>
+                                        </template>
+                                        <hr>
+                                        <ul>
+                                            <li v-for="pessoa in pessoas">
+                                                <div v-for="(valor, chave, index) in pessoa">
+                                                    {{ chave }} = {{ valor }} ({{ index + 1}})
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <hr>
+                                        <div v-for="n in 10">{{ n }}</div>
+                                    </div>
+                                    
+                                    <script>
+                                        new Vue({
+                                            el: '#app',
+                                            data: {
+                                                cores: ['vermelho', 'verde', 'amarelo', 'azul'],
+                                                pessoas: [
+                                                    { nome: 'Ana', idade: 26, peso: 59 },
+                                                    { nome: 'Guilherme', idade: 22, peso: 89 }
+                                                ]
+                                            }
+                                        })
+                                    </script>
+                                    
+                                    <style>
+                                        ul {
+                                            list-style: none;
+                                        }
+                                    
+                                        h1, p {
+                                            display: inline;
+                                        }
+                                    </style>                                
+                               
+                         </textarea>
+                            
+                         </pre>
+                                
+                    </p>
+                    </li>
+
+
+                    <li>
+                            <a href="directives/v-for/listas-v5.html" ><h3>v-for com binding de key</h3></a>
+                        <p> 
+                             <pre>    
+                            Exemplo qu ressalta a importancia do uso da binding "key" no v-for para que o vue
+                            nao se perca quando novos elementos sao adicionados a uma lista complexa.
+                            
+                             <textarea rows="10" cols="80" style="text-align: left;  color: crimson;">
+                                    <div id="app">
+                                            <ul>
+                                                <li v-for="(cor, i) in cores"
+                                                    :key="cor">{{ i + 1 }}) {{ cor }}</li>
+                                            </ul>
+                                            <button @click="cores.push('branca')">Adicionar</button>
+                                            <hr>
+                                            <template v-for="(cor, i) in cores">
+                                                <h1>{{ cor }}</h1>
+                                                <p>{{ i }}</p>
+                                            </template>
+                                            <hr>
+                                            <ul>
+                                                <li v-for="pessoa in pessoas">
+                                                    <div v-for="(valor, chave, index) in pessoa">
+                                                        {{ chave }} = {{ valor }} ({{ index + 1}})
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <hr>
+                                            <div v-for="n in 10">{{ n }}</div>
+                                        </div>
+                                        
+                                        <script>
+                                            new Vue({
+                                                el: '#app',
+                                                data: {
+                                                    cores: ['vermelho', 'verde', 'amarelo', 'azul'],
+                                                    pessoas: [
+                                                        { nome: 'Ana', idade: 26, peso: 59 },
+                                                        { nome: 'Guilherme', idade: 22, peso: 89 }
+                                                    ]
+                                                }
+                                            })
+                                        </script>
+                                        
+                                        <style>
+                                            ul {
+                                                list-style: none;
+                                            }
+                                        
+                                            h1, p {
+                                                display: inline;
+                                            }
+                                        </style>  
+                             </textarea>
+                                
+                             </pre>
+                                    
+                        </p>
+                        </li>
+
+
+
+                    
+  
+</ul>
+</body>
+</html>
